@@ -1,49 +1,56 @@
 import pygame
+
 from settings import *
-from world import draw_grid
+from world import World
 
 
 class Game:
+
     def __init__(self):
-        self.window = pygame.display.set_mode((WINDOW_X, WINDOW_Y))
+
+        pygame.init()
+
+        self.window = pygame.display.set_mode(
+            (WINDOW_X, WINDOW_Y)
+        )
+
+        pygame.display.set_caption("Satisfactual!")
+
+        self.clock = pygame.time.Clock()
+        self.running = True
+
+        self.world = World()
 
     def run(self):
-        WINDOW = pygame.display.set_mode((WINDOW_X, WINDOW_Y))
-        pygame.display.set_caption("Satisfactual!")
-        running = True
-        while running:
 
-            # EVENTS
-            for event in pygame.event.get():
+        while self.running:
 
-                if event.type == pygame.QUIT:
-                    running = False
+            self.handle_events()
+            self.update()
+            self.draw()
 
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        running = False
-            # BACKGROUND
-            WINDOW.fill("Black")
-
-            # DISPLAY UPDATE
-            pygame.display.flip()
-
-            CLOCK.tick(FPS)
+            self.clock.tick(FPS)
 
         pygame.quit()
 
+    def handle_events(self):
 
-def handle_events(self):
-    pass
+        for event in pygame.event.get():
 
+            if event.type == pygame.QUIT:
+                self.running = False
 
-def update(self, dt):
-    pass
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.running = False
 
+    def update(self):
+        pass
 
-def draw(self):
-    self.window.fill("black")
+    def draw(self):
 
-    draw_grid(self.window)
+        self.window.fill(BACKGROUND_COLOR)
 
-    pygame.display.flip()
+        self.world.draw_grid(self.window)
+
+        pygame.display.flip()

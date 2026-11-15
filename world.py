@@ -1,16 +1,25 @@
 import pygame
-from settings import *
-from game import *
+
+from settings import (
+    GRID_X, GRID_Y,
+    TILE_SIZE,
+    OFFSET_X, OFFSET_Y
+)
 
 
-class World():
+class World:
+
     def __init__(self):
-        for x in range(GRID_X):
-            for y in range(GRID_Y):
-                GRID.append((x, y))
 
-    def draw_grid(self):
-        for tile_x, tile_y in GRID:
+        self.grid = [
+            (x, y)
+            for x in range(GRID_X)
+            for y in range(GRID_Y)
+        ]
+
+    def draw_grid(self, surface):
+
+        for tile_x, tile_y in self.grid:
 
             rect = pygame.Rect(
                 OFFSET_X + tile_x * TILE_SIZE,
