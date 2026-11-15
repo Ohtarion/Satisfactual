@@ -1,0 +1,59 @@
+# Satisfactual
+
+## Projektstruktur
+
+| Datei/Ordner | Zuständigkeit |
+| --- | --- |
+| `main.py` | Einstiegspunkt: erstellt das `Game`-Objekt und startet das Spiel. |
+| `game.py` | Verwaltet Fenster, Game Loop, Events und Spielablauf. |
+| `world.py` | Verwaltet die Spielwelt und ihre Objekte. |
+| `entities.py` | Definiert `Item`, `Machine` und `Conveyor`. |
+| `settings.py` | Enthält Einstellungen wie Fenstergröße, FPS und Rastergröße. |
+| `assets/` | Enthält Grafiken, Sounds und andere Ressourcen. |
+
+## Abhängigkeiten
+
+Die Module bauen in dieser Reihenfolge aufeinander auf:
+
+1. `main.py` importiert `Game` aus `game.py` und startet das Spiel.
+2. `game.py` importiert `World` aus `world.py` und verwaltet die Spielwelt.
+3. `world.py` importiert Entities aus `entities.py` und erstellt beziehungsweise verwaltet Spielobjekte.
+
+Beispiele für die Imports:
+
+```python
+# world.py
+from entities import Item, Machine, Conveyor
+```
+
+```python
+# game.py
+from world import World
+```
+
+```python
+# main.py
+from game import Game
+
+
+def main():
+	game = Game()
+	game.run()
+
+
+if __name__ == "__main__":
+	main()
+```
+
+## Tests
+
+Zum Überprüfen der Entities kann eine separate Datei wie `test_entities.py` verwendet werden. Dort lassen sich Objekte erstellen, Attribute ändern und Funktionen testen. Diese Datei dient der Entwicklung und gehört nicht zur Spielarchitektur.
+
+## Nächste Schritte
+
+- `entities.py`: `Item`, `Machine` und `Conveyor` behalten; einen Import von `main` entfernen.
+- `game.py`: erstellen, falls die Datei noch nicht vorhanden ist.
+- `world.py`: erstellen, sobald die Spielobjekte verwaltet werden sollen.
+- `main.py`: auf den Einstiegscode beschränken.
+
+**Grundprinzip:** `main.py` startet das Spiel, `Game` verwaltet den Ablauf, `World` verwaltet die Spielwelt und die Entities kümmern sich um ihre eigenen Eigenschaften und Funktionen.
