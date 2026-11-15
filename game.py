@@ -1,12 +1,15 @@
 import pygame
 from settings import *
+from world import draw_grid
 
 
 class Game:
     def __init__(self):
-        pass
+        self.window = pygame.display.set_mode((WINDOW_X, WINDOW_Y))
 
     def run(self):
+        WINDOW = pygame.display.set_mode((WINDOW_X, WINDOW_Y))
+        pygame.display.set_caption("Satisfactual!")
         running = True
         while running:
 
@@ -19,14 +22,8 @@ class Game:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         running = False
-            WINDOW = pygame.display.set_mode((WINDOW_X, WINDOW_Y))
-            pygame.display.set_caption("Satisfactual!")
             # BACKGROUND
             WINDOW.fill("Black")
-
-            for x in range(GRID_X):
-                for y in range(GRID_Y):
-                    GRID.append((x, y))
 
             # DISPLAY UPDATE
             pygame.display.flip()
@@ -45,4 +42,8 @@ def update(self, dt):
 
 
 def draw(self):
-    pass
+    self.window.fill("black")
+
+    draw_grid(self.window)
+
+    pygame.display.flip()

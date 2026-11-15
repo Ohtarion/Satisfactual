@@ -3,19 +3,25 @@ from settings import *
 from game import *
 
 
-def draw_grid():
-    for tile_x, tile_y in GRID:
+class World():
+    def __init__(self):
+        for x in range(GRID_X):
+            for y in range(GRID_Y):
+                GRID.append((x, y))
 
-        rect = pygame.Rect(
-            OFFSET_X + tile_x * TILE_SIZE,
-            OFFSET_Y + tile_y * TILE_SIZE,
-            TILE_SIZE,
-            TILE_SIZE
-        )
+    def draw_grid(self):
+        for tile_x, tile_y in GRID:
 
-        pygame.draw.rect(
-            WINDOW,
-            (100, 100, 100),
-            rect,
-            1
-        )
+            rect = pygame.Rect(
+                OFFSET_X + tile_x * TILE_SIZE,
+                OFFSET_Y + tile_y * TILE_SIZE,
+                TILE_SIZE,
+                TILE_SIZE
+            )
+
+            pygame.draw.rect(
+                surface,
+                (100, 100, 100),
+                rect,
+                1
+            )
