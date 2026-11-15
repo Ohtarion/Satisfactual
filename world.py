@@ -35,6 +35,5 @@ class World:
                 1
             )
 
-
-def update(self, dt):
-    pass
+    def update(self, dt):
+        pass
