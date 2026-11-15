@@ -30,10 +30,11 @@ class Game:
         while self.running:
 
             self.handle_events()
-            self.update()
-            self.draw()
 
-            self.clock.tick(FPS)
+            dt = self.clock.tick(FPS) / 1000
+
+            self.update(dt)
+            self.draw()
 
         pygame.quit()
 

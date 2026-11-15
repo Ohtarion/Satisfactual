@@ -1,7 +1,14 @@
+import pygame
+
+
 class Item:
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
+
+    def __init__(self, position):
+        self.position = pygame.Vector2(position)
+        self.speed = 100
+
+    def update(self, dt):
+        self.position.x += self.speed * dt
 
 
 class Machine:
