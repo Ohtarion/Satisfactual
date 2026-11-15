@@ -35,5 +35,6 @@ class World:
                 1
             )
 
-    def update(self, dt, keys):
-        self.player.update(dt, keys)
+
+def update(self, dt):
+    pass

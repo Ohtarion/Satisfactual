@@ -6,7 +6,6 @@ from settings import (
     BACKGROUND_COLOR
 )
 from world import World
-clock = pygame.time.Clock()
 
 
 class Game:
@@ -32,11 +31,10 @@ class Game:
 
             self.handle_events()
 
-            dt = clock.tick(FPS) / 1000
+            dt = self.clock.tick(FPS) / 1000
 
             self.update(dt)
             self.draw()
-            world.update(dt, keys)
 
         pygame.quit()
 
@@ -52,7 +50,7 @@ class Game:
                     self.running = False
 
     def update(self, dt):
-        pass
+        self.world.update(dt)
 
     def draw(self):
 
