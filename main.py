@@ -1,10 +1,10 @@
-import pygame
-
-pygame.init()
+from game import Game
 
 
 def main():
-    pass
+
+    game = Game()
+    game.run()
 
 
 if __name__ == "__main__":
