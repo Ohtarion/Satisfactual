@@ -34,3 +34,6 @@ class World:
                 rect,
                 1
             )
+
+    def update(self, dt, keys):
+        self.player.update(dt, keys)

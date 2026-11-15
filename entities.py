@@ -25,3 +25,7 @@ class Conveyor:
         self.speed = speed
         self.capacity = capacity
         self.items = []
+
+
+def update(self, dt, keys):
+    self.position.x += self.speed * dt
