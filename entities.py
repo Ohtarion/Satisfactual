@@ -18,9 +18,3 @@ class Conveyor:
         self.speed = speed
         self.capacity = capacity
         self.items = []
-
-    def get_pos(self):
-        pass
-
-    def get_direction(self):
-        pass

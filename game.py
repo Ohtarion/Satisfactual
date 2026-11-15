@@ -1,6 +1,10 @@
 import pygame
-
-from settings import *
+from settings import (
+    WINDOW_X,
+    WINDOW_Y,
+    FPS,
+    BACKGROUND_COLOR
+)
 from world import World
 
 
@@ -44,7 +48,7 @@ class Game:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
 
-    def update(self):
+    def update(self, dt):
         pass
 
     def draw(self):
