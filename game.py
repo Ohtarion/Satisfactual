@@ -1,42 +1,48 @@
 import pygame
 from settings import *
 
-running = True
-while running:
 
-    # EVENTS
-    for event in pygame.event.get():
+class Game:
+    def __init__(self):
+        pass
 
-        if event.type == pygame.QUIT:
-            running = False
+    def run(self):
+        running = True
+        while running:
 
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                running = False
+            # EVENTS
+            for event in pygame.event.get():
 
-    # BACKGROUND
-    WINDOW.fill("Black")
+                if event.type == pygame.QUIT:
+                    running = False
 
-    # GRID ZEICHNEN
-    for tile_x, tile_y in GRID:
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
+            WINDOW = pygame.display.set_mode((WINDOW_X, WINDOW_Y))
+            pygame.display.set_caption("Satisfactual!")
+            # BACKGROUND
+            WINDOW.fill("Black")
 
-        rect = pygame.Rect(
-            OFFSET_X + tile_x * TILE_SIZE,
-            OFFSET_Y + tile_y * TILE_SIZE,
-            TILE_SIZE,
-            TILE_SIZE
-        )
+            for x in range(GRID_X):
+                for y in range(GRID_Y):
+                    GRID.append((x, y))
 
-        pygame.draw.rect(
-            WINDOW,
-            (100, 100, 100),
-            rect,
-            1
-        )
+            # DISPLAY UPDATE
+            pygame.display.flip()
 
-    # DISPLAY UPDATE
-    pygame.display.flip()
+            CLOCK.tick(FPS)
 
-    CLOCK.tick(FPS)
+        pygame.quit()
 
-pygame.quit()
+
+def handle_events(self):
+    pass
+
+
+def update(self, dt):
+    pass
+
+
+def draw(self):
+    pass
